@@ -19,4 +19,5 @@ function input($size, $name, $label,$type, $placeholder) {
         if(strlen ($name) < $min || strlen ($name) );
     }
 }
+return form{};
 ?>
