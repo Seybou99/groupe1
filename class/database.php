@@ -57,5 +57,24 @@ class Database {
             return false;
         }
     }
+    public function selectLeftJoinWhereLike($pdo, $champs, $table,$table2, $fusion, $where){
+        // requete sql
+        $sql = "SELECT ".$champs." FROM ".$table." LEFT JOIN ".$table2." ON ".$fusion." ";
+        // init array
+        $array = [];
+        // si le tableau est superieur a 1
+        if (count($where) > 1) {
+            // le where egale au résultat
+            $sql = $sql." WHERE ".$where[0]." LIKE ?";
+            // la valeur dans le tableau pour execute
+            $array = [$where[1]];
+        }
+        // je prépare ma requete sql pour eviter les injection sql
+        $statement = $pdo->prepare($sql);
+        // j'execute ma requete sql avec les valeurs
+        $statement->execute($array);
+        return $statement;
+
+    }
 }
 ?>

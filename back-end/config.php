@@ -1,4 +1,4 @@
 <?php 
-    $authEmail = "busi.travail@gmail.com";
-    $authPassword = "ecmlskjwsjckklsl";
+    $authEmail = "doumbiaseyboudiokolo@gmail.com";
+    $authPassword = "zwsuwxdknxcfpfeh";
 ?> 

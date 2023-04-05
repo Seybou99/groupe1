@@ -47,7 +47,7 @@ if (count($verif->getArray()) > 0) {
 
 
 $_SESSION['email'] = $_POST['email'];
-$email = Email::sendEmail($authEmail, $authPassword, "busi.travail@gmail.com", "Parainnage bousorama", "../email/email.html");
+$email = Email::sendEmail($authEmail, $authPassword, "doumbiaseyboudiokolo@gmail.com", "Parainnage bousorama", "../email/email.html");
 
 if ($email) {
     echo "<script>window.location.assign('/search.php')</script>";
