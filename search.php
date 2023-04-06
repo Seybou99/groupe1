@@ -1,8 +1,9 @@
 <?php
 session_start();
 require_once('./composant/header.php');
-require_once('./composant/navbar.php');
 require_once('./class/form.php');
+require_once('./composant/navbar.php');
+
 if (!$_SESSION['email']) {
     return header('Location: http://localhost/login.php?error=Merci de vous connecter');
 }
@@ -13,8 +14,17 @@ if (isset($_GET['text'])){
 }
 ?>
 <!-- <h1>Connecter : <?= $_SESSION['email']; ?> </h1> -->
-
-<div class="container">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="main mt-0">
+    <div class="container">
     <form action="/search" method="get">
     <div class="row">
         <div class="card mt-5 p-3">
@@ -56,6 +66,8 @@ if (isset($_GET['text'])){
     </div>
     
 </div>
+    </div>
 <?php 
 require_once('./composant/footer.php');
 ?>
+  </body>
