@@ -22,13 +22,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">';
         $nav = isset($_SESSION['email']) ? '<ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" style="color:#2A4984" href="mes_annonces.php">Annonces</a>
+            <a class="nav-link" style="color:#2A4984" href="mes-annonces.php">Annonces</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color:#2A4984" href="mes-favoris.php">Favoris</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color:#2A4984" href="mon-profil.php">Profil</a>
+            <a class="nav-link" style="color:#2A4984" href="voir-detail-annonce.php">Profil</a>
           </li>
         </ul>' : '<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>';
     $button = isset($_SESSION['email']) ? '<a class="btn btn-outline-danger" href="../back-end/deconnexion.php">Deconnexion</a>' : '
