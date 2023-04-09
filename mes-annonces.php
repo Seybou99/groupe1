@@ -36,19 +36,57 @@ $result = $pdo->prepare('SELECT * FROM ad');
           foreach ($result as $key => $value) {
             $id_ad=$value["id_ad"];
             $title=$value['title'];
-          echo " <tr><td>".$id_ad."</td>";
-          echo '<td>'.$title.'</td>';
-           echo' <td>
+            echo " <tr><td>".$id_ad."</td>";
+            echo '<td>'.$title.'</td>';
+            echo' <td>
               <a href="voir-detail-annonce.php?id_ad='.$value['id_ad'].'" class="btn btn-success">Détail</a>
               <a href="" class="btn btn-warning">Modifier</a>
-              <a href="supprimer-annonce?id_ad='.$value['id_ad'].'" class="btn btn-danger">Supprimer</a>
-            </td>
-          </tr>';
-        }
+              <a href="supprimer-annonce?id_ad='.$value['id_ad'].'" class="btn btn-danger">Supprimer</a>';
+
+              // Vérifiez si l'annonce est déjà dans les favoris de l'utilisateur
+                $favoris = array();
+                $user_id = 1; // l'ID de l'utilisateur en cours, à remplacer par le code approprié
+                $annonce_id = 123; // l'ID de l'annonce en cours
+                $mysqli = new mysqli('localhost', 'root', '', 'dormirco');
+                if ($mysqli->connect_error) {
+                  die('Erreur de connexion à la base de données : ' . $mysqli->connect_error);
+                }
+                $resultat = $mysqli->query("SELECT * FROM favorite WHERE id_user=$user_id");
+                while ($row = $resultat->fetch_assoc()) {
+                  $favoris[] = $row['id_ad'];
+                }
+                if (in_array($annonce_id, $favoris)) {
+                  // L'annonce est déjà dans les favoris de l'utilisateur
+                  echo '<button>Retirer des favoris</button>';
+                } else {
+                  // L'annonce n'est pas dans les favoris de l'utilisateur
+                  echo '<button>Ajouter aux favoris</button>';
+                }
+                
+                // Traitez le clic sur le bouton
+                
+                if (isset($_POST['favori'])) {
+                  if (in_array($annonce_id, $favoris)) {
+                    // Retirez l'annonce des favoris de l'utilisateur
+                    $mysqli->query("DELETE FROM favorite WHERE id_user=$user_id AND id_ad=$annonce_id");
+                  } else {
+                    // Ajoutez l'annonce aux favoris de l'utilisateur
+                    $mysqli->query("INSERT INTO favorite (id_user, id_ad) VALUES ($user_id, $annonce_id)");
+                  }
+                }
+                $mysqli->close();
+              
+            
+              }
+      echo '         </td>
+              </tr>';
+            
     ?>
     
   </tbody>
 </table>
-    
+<div class="mess">
+      <h5>Vous voulez créer une annonce. ?<a href="ajout-annonce.php">ajouter une annonce</a></h5>
+</div>
 </body>
 </html>
