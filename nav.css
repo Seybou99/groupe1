@@ -68,10 +68,6 @@ ul li a{
 .inner-award{
     flex: 1 1 300px;
     border: white solid 2px;
-    /* width: 200px;
-    border-radius: 20px;
-    text-align: center;
-    height: 100%; */
 }
 .inner-award h2,p{
     text-align: center;

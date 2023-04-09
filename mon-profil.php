@@ -7,11 +7,12 @@ $database = new Database();
 $pdo = $database->connectDb();
 //$result = $database->select($pdo, '*', 'user', ['id_user','1']);
 
-$result = $pdo->prepare('SELECT * FROM user WHERE id_user');
+$result = $pdo->prepare('SELECT * FROM user WHERE id_user= 1');
 /* requete, */
     $result->execute();
     $utilisateur = $result->fetch();
     //var_dump($utilisateur);
+
 ?>
 <html>
 <head>
@@ -47,21 +48,12 @@ $result = $pdo->prepare('SELECT * FROM user WHERE id_user');
         <br />  
         </p>
 
-        <p>
-        date_création: <?php echo $utilisateur['date_created']; ?>
-        <br />  
-        </p>
 
-        <p>
-        date_mise_à_Jour: <?php echo $utilisateur['date_updated']; ?>
-        <br /> 
-        </p>
-
+        <a href="modifier-mon-profil.php?id_user='.$value['id_user'].'" class="btn btn-warning">Modifier</a>
         
         <?php
         // if(isset($_SESSION['id_user']) AND $utilisateur['id_user'] == $_SESSION['id_user'])
         //     { ?>
-            <!-- <a href='modifier_profil.php'> Modifier mon profil </a> -->
        <!-- <a href='deconnexion.php'> Se déconnecter </a> -->
            <?php
         //     } ?>
